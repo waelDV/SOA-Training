@@ -30,4 +30,10 @@ public class ModuleBesRestAPI {
         return Response.status(400).entity("error").build();
     }
 
+    @Path("/{mat}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getMBByMat(@PathParam("mat") String mat) {
+        return Response.status(200).entity(mdb.getModuleByMatricule(mat)).build();
+    }
 }
