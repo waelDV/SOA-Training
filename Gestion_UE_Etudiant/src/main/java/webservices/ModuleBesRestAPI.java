@@ -51,4 +51,15 @@ public class ModuleBesRestAPI {
     public Response getMBByType(@QueryParam("type") Module.TypeModule type) {
         return Response.status(200).entity(mdb.getModulesByType(type)).build();
     }
+
+    @Path("/update/{mat}")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public  Response UpdateMB(@PathParam("mat") String mat, Module md){
+        if(mdb.updateModule(mat , md)){
+            return Response.status(200).entity("updated").build();
+        }
+        else
+            return Response.status(400).entity("not found").build();
+    }
 }
