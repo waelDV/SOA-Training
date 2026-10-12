@@ -45,4 +45,10 @@ public class ModuleBesRestAPI {
         else
             return Response.status(400).entity("not found").build();
     }
+    @Path("/")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getMBByType(@QueryParam("type") Module.TypeModule type) {
+        return Response.status(200).entity(mdb.getModulesByType(type)).build();
+    }
 }
